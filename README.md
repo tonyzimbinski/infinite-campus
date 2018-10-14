@@ -8,6 +8,8 @@ Easily get class and grade information from Infinite Campus.
 
 ### Super easy to use
 
+#### example.js
+
 ``` JavaScript
 var finite = require('finite-campus')
 
@@ -40,6 +42,7 @@ finite.fetch('myUsername', 'myPassword', 'New York School Districts', 'NY').then
     console.log('[ERROR]', err)
 })
 ``` 
+
 ---
 
 #### Table of Contents
