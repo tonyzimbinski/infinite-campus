@@ -104,31 +104,31 @@ campus.fetch(username, password, district, state).then(grades => {
 
 ``` JSONC
 [
-     {
-         "classDetails": {
-         "teacher": "J Smith",
-         "name": "1 AP Human Geography"
-     },
-         "position": {
-         "period": "2", // period in chronological order, in this case there is zero hour, so 1st hour is actually the 2nd hour of the day
- "periodName": "1", // the name of the period, this is usually won't include zero hour
- "startTime": "08:05 AM", // 12 hour time HH:MM AM/PM
- "endTime": "09:09 AM",
- "term": "1",
- "termName": "Q1",
- "startDate": "09/04/2018", // MM/DD/YYYY format
- "endDate": "11/08/2018"
- },
- "student": {
- "totalPoints": "200.0",
- "points": "190.0",
- "percentage": "95",
- "grade": "A"
- }
- },
- {...},
- {...},
- ...
+    {
+        "classDetails": {
+            "teacher": "J Smith",
+            "name": "1 AP Human Geography"
+        },
+        "position": {
+            "period": "2", // period in chronological order, in this case there is zero hour, so 1st hour is actually the 2nd hour of the day
+            "periodName": "1", // the name of the period, this is usually won't include zero hour
+            "startTime": "08:05 AM", // 12 hour time HH:MM AM/PM
+            "endTime": "09:09 AM",
+            "term": "1",
+            "termName": "Q1",
+            "startDate": "09/04/2018", // MM/DD/YYYY format
+            "endDate": "11/08/2018"
+        },
+        "student": {
+            "totalPoints": "200.0",
+            "points": "190.0",
+            "percentage": "95",
+            "grade": "A"
+        }
+    },
+    {...},
+    {...},
+     ...
 ]
 ```
 
@@ -236,16 +236,16 @@ campus.getDistrict('X - Y area schools', 'NY').then(district => {
 
 ``` JSONC
 {
- "id": 00000,
- "district_name": "CITY NAME AREA SCHOOLS",
- "district_app_name": "cityname",
- "district_baseurl": "https://city-name.infinitecampus.org/campus/",
- "district_code": "xxxxxx",
- "state_code": "XX",
- "staff_login_url": "https://city-name.infinitecampus.org/campus/cityname.jsp",
- "parent_login_url": "https://city-name.infinitecampus.org/campus/portal/cityname.jsp",
- "student_login_url": "https://city-name.infinitecampus.org/campus/portal/cityname.jsp",
- "earliest": true
+    "id": 00000,
+    "district_name": "CITY NAME AREA SCHOOLS",
+    "district_app_name": "cityname",
+    "district_baseurl": "https://city-name.infinitecampus.org/campus/",
+    "district_code": "xxxxxx",
+    "state_code": "XX",
+    "staff_login_url": "https://city-name.infinitecampus.org/campus/cityname.jsp",
+    "parent_login_url": "https://city-name.infinitecampus.org/campus/portal/cityname.jsp",
+    "student_login_url": "https://city-name.infinitecampus.org/campus/portal/cityname.jsp",
+    "earliest": true
 }
 ```
 
@@ -320,9 +320,9 @@ campus.getUser(district).then(user => {
 
 ```
 { 
- personID: '00000',
- structureID: '000',
- calendarID: '000' 
+    personID: '00000',
+    structureID: '000',
+    calendarID: '000' 
 }
 ```
 
@@ -356,12 +356,15 @@ campus.getClasses(district, user).then(classes => {
 returns an array of class ID's
 
 ```
-[ '000000',
- '000000',
- '000000',
- '000000',
- '000000',
- ...]
+[
+    '000000',
+    '000000',
+    '000000',
+    '000000',
+    '000000',
+    ...
+    ...
+]
 ```
 
 ---
