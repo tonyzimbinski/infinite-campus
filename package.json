@@ -1,5 +1,5 @@
 {
-  "name": "finite_campus",
+  "name": "infinite-campus",
   "version": "1.0.0",
   "description": "📚 API for Infinite Campus written in Node JS",
   "main": "index.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/qwazwsx/infinite-campus-API.git"
+    "url": "git+https://github.com/qwazwsx/infinite-campus.git"
   },
   "keywords": [
     "infinite-campus",
@@ -21,7 +21,7 @@
   "author": "qwazwsx (https://github.com/qwazwsx)",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/qwazwsx/infinite-campus-API/issues"
+    "url": "https://github.com/qwazwsx/infinite-campus/issues"
   },
-  "homepage": "https://github.com/qwazwsx/infinite-campus-API#readme"
+  "homepage": "https://github.com/qwazwsx/infinite-campus#readme"
 }

@@ -11,9 +11,9 @@ Easily get class and grade information from Infinite Campus.
 #### example.js
 
 ``` JavaScript
-var finite = require('finite-campus')
+var campus = require('infinite-campus')
 
-finite.fetch('myUsername', 'myPassword', 'New York School Districts', 'NY').then(grades => {
+campus.fetch('myUsername', 'myPassword', 'New York School Districts', 'NY').then(grades => {
 
     // loop over every class we have
     for (var i = 0; i < grades.length; i++){
@@ -48,38 +48,38 @@ finite.fetch('myUsername', 'myPassword', 'New York School Districts', 'NY').then
 #### Table of Contents
 
 - [Basic Usage:](#basic-usage)
-    + [finite.fetch()](#finitefetchusername-password-district-state)
+    + [campus.fetch()](#campusfetchusername-password-district-state)
 - [Advanced Usage](#advanced-usage)
-    + [finite.cookies()](#finitecookiescookies)
-    + [finite.getDistrict()](#finitegetdistrictdistrictname-state)
-    + [finite.login()](#finitelogindistrict-username-password)
-    + [finite.getUser()](#finitegetuserdistrict)
-    + [finite.getClasses()](#finitegetclassesdistrict-user)
-    + [finite.getXML()](#finitegetxmldistrict-user-classes)
-    + [finite.parseXML()](#finiteparsexmlxml)
+    + [campus.cookies()](#campuscookiescookies)
+    + [campus.getDistrict()](#campusgetdistrictdistrictname-state)
+    + [campus.login()](#campuslogindistrict-username-password)
+    + [campus.getUser()](#campusgetuserdistrict)
+    + [campus.getClasses()](#campusgetclassesdistrict-user)
+    + [campus.getXML()](#campusgetxmldistrict-user-classes)
+    + [campus.parseXML()](#campusparsexmlxml)
 
 ---
 # Basic Usage:
 
-### finite.fetch(username, password, district, state)
+### campus.fetch(username, password, district, state)
 
 Get your grades and course information.
 
 This method is a combination of the 6 'advanced usage' methods that are detailed in the ['advanced usage'](#advanced-usage) section of this document. **If all you want to do is get grades and class info, this is the method to use**. For the sake of understanding, the 'advanced' methods are briefly explained below. See the ['advanced usage'](#advanced-usage) section for a more in-depth look on how to leverage these individual methods.
 
-1. [`.getDistrict()`](#finitegetdistrictdistrictname-state) - gets the district ID and login URL based on your district name and state
-2. [`.login()`](#finitelogindistrict-username-password) - logs in 
-3. [`.getUser()`](#finitegetuserdistrict) - gets various user ID's so we can fetch our class list
-4. [`.getClasses()`](#finitegetclassesdistrict-user) - uses the above ID's to get a class list
-5. [`.getXML()`](#finitegetxmldistrict-user-classes) - takes a class list and returns a messy XML file of class information (and a *TON* of other stuff)
-6. [`.parseXML()`](#finiteparsexmlxml) - parses the above XML into a more friendly format
+1. [`.getDistrict()`](#campusgetdistrictdistrictname-state) - gets the district ID and login URL based on your district name and state
+2. [`.login()`](#campuslogindistrict-username-password) - logs in 
+3. [`.getUser()`](#campusgetuserdistrict) - gets various user ID's so we can fetch our class list
+4. [`.getClasses()`](#campusgetclassesdistrict-user) - uses the above ID's to get a class list
+5. [`.getXML()`](#campusgetxmldistrict-user-classes) - takes a class list and returns a messy XML file of class information (and a *TON* of other stuff)
+6. [`.parseXML()`](#campusparsexmlxml) - parses the above XML into a more friendly format
 
 #### Example usage:
 
 This method returns a promise, so `.then` and `.catch` must be used
 
 ``` JavaScript
-finite.fetch(username, password, district, state).then(grades => {
+campus.fetch(username, password, district, state).then(grades => {
 
     console.log('You are enrolled in ' + grades.length + ' classes this year')
     // You are enrolled in 24 classes this year
@@ -171,9 +171,9 @@ note: to prevent error text from displaying as `[object Object] ` in console the
 
 # Advanced Usage
 
-The following methods are all implemented in [`finite.fetch()`](#finitefetchusername-password-district-state). These methods are left exposed so people looking for more control can use them. If you are looking to implement other infinite campus functions (ie. assignments, notifications etc) you can use the [`finite.login`](#finitelogindistrict-username-password) function to make authenticating easy for your modifications.
+The following methods are all implemented in [`campus.fetch()`](#campusfetchusername-password-district-state). These methods are left exposed so people looking for more control can use them. If you are looking to implement other infinite campus functions (ie. assignments, notifications etc) you can use the [`campus.login`](#campuslogindistrict-username-password) function to make authenticating easy for your modifications.
 
-### finite.cookies(cookies)
+### campus.cookies(cookies)
 
 This method lets you get and set cookies. If you pass it a value it will override the current cookies. 
 
@@ -181,15 +181,15 @@ This method lets you get and set cookies. If you pass it a value it will overrid
 
 ```JavaScript
     // example login to set authenticated cookies
-    finite.login(.....).then(()=>{
+    campus.login(.....).then(()=>{
         // get cookies
-        console.log(finite.cookies()) // JSSESSIONID=XXX; appName=XXX; XSRF-TOKEN=XXX ... ...
+        console.log(campus.cookies()) // JSSESSIONID=XXX; appName=XXX; XSRF-TOKEN=XXX ... ...
 
         // set cookies (this overrides everything)
-        finite.cookies('myCookie=example;')
+        campus.cookies('myCookie=example;')
 
         // get new cookies
-        console.log(finite.cookies()) // myCookie=example;
+        console.log(campus.cookies()) // myCookie=example;
     }) 
 ```
 #### Parameters:
@@ -207,7 +207,7 @@ This method returns the current cookies. If you just set the cookies it will ret
 
 ---
 
-### finite.getDistrict(districtName, state)
+### campus.getDistrict(districtName, state)
 
 This method returns various ID's and access URL's from selected school district. Many other functions (.login, .getUser, .getClasses, .getGrades) rely on the district information returned from this function.
 
@@ -217,7 +217,7 @@ This method returns various ID's and access URL's from selected school district.
 This method returns a promise, so `.then` and `.catch` must be used
 
 ```Javascript
-finite.getDistrict('X - Y area schools', 'NY').then(district => {
+campus.getDistrict('X - Y area schools', 'NY').then(district => {
     // ...
 }).catch(err => { // catch errors
     console.log('[ERROR]', err)
@@ -257,7 +257,7 @@ finite.getDistrict('X - Y area schools', 'NY').then(district => {
 
 ---
 
-### finite.login(district, username, password)
+### campus.login(district, username, password)
 
 This method logs the user in and sets cookies to authenticate subsequent requests with.
 
@@ -267,7 +267,7 @@ This method logs the user in and sets cookies to authenticate subsequent request
 This method returns a promise, so `.then` and `.catch` must be used
 
 ```Javascript
-finite.login(district, 'myUsername', 'myPassword').then(() => {
+campus.login(district, 'myUsername', 'myPassword').then(() => {
     //...
 }).catch(err => { // catch errors
     console.log('[ERROR]', err)
@@ -278,7 +278,7 @@ finite.login(district, 'myUsername', 'myPassword').then(() => {
 
 |Parameter Name|Type|Description| 
 |--|--|--|
-| district | object | the object that gets returned by [`finite.getDistrict()`](#finitegetdistrictdistrictname-state) |
+| district | object | the object that gets returned by [`campus.getDistrict()`](#campusgetdistrictdistrictname-state) |
 | username | string | your username you use to login |
 | password | string | your password you use to login |
 
@@ -294,7 +294,7 @@ finite.login(district, 'myUsername', 'myPassword').then(() => {
 
 ---
 
-### finite.getUser(district)
+### campus.getUser(district)
 
 This method gets various user ID's that are required to fetch grades
 
@@ -303,7 +303,7 @@ This method gets various user ID's that are required to fetch grades
 This method returns a promise, so `.then` and `.catch` must be used
 
 ```Javascript
-finite.getUser(district).then(user => {
+campus.getUser(district).then(user => {
     //...
 }).catch(err => { // catch errors
     console.log('[ERROR]', err)
@@ -314,7 +314,7 @@ finite.getUser(district).then(user => {
 
 |Parameter Name|Type|Description| 
 |--|--|--|
-| district | object | the object that gets returned by [`finite.getDistrict()`](#finitegetdistrictdistrictname-state) |
+| district | object | the object that gets returned by [`campus.getDistrict()`](#campusgetdistrictdistrictname-state) |
 
 #### Returns: 
 
@@ -328,7 +328,7 @@ finite.getUser(district).then(user => {
 
 ---
 
-### finite.getClasses(district, user)
+### campus.getClasses(district, user)
 
 This method gets a list of class ID's that the user is enrolled in
 
@@ -337,7 +337,7 @@ This method gets a list of class ID's that the user is enrolled in
 This method returns a promise, so `.then` and `.catch` must be used
 
 ```Javascript
-finite.getClasses(district, user).then(classes => {
+campus.getClasses(district, user).then(classes => {
     //...
 }).catch(err => { // catch errors
     console.log('[ERROR]', err)
@@ -348,8 +348,8 @@ finite.getClasses(district, user).then(classes => {
 
 |Parameter Name|Type|Description| 
 |--|--|--|
-| district | object | the object that gets returned by [`finite.getDistrict()`](#finitegetdistrictdistrictname-state) |
-| user | object | the object that gets returned by [`finite.getUser()`](#finitegetuserdistrict) |
+| district | object | the object that gets returned by [`campus.getDistrict()`](#campusgetdistrictdistrictname-state) |
+| user | object | the object that gets returned by [`campus.getUser()`](#campusgetuserdistrict) |
 
 #### Returns: 
 
@@ -366,16 +366,16 @@ returns an array of class ID's
 
 ---
 
-### finite.getXML(district, user, classes)
+### campus.getXML(district, user, classes)
 
-This method fetches an XML file containing class information . This XML file isn't layed out very thoughtfully and is pretty hard to understand. This is why [`finite.getXML`](#finitegetxmldistrict-user-classes) exists. 
+This method fetches an XML file containing class information . This XML file isn't layed out very thoughtfully and is pretty hard to understand. This is why [`campus.getXML`](#campusgetxmldistrict-user-classes) exists. 
 
 #### Example usage:
 
 This method returns a promise, so `.then` and `.catch` must be used
 
 ```Javascript
-finite.getXML(district, user, classes).then(XML => {
+campus.getXML(district, user, classes).then(XML => {
     //...
 }).catch(err => { // catch errors
     console.log('[ERROR]', err)
@@ -386,9 +386,9 @@ finite.getXML(district, user, classes).then(XML => {
 
 |Parameter Name|Type|Description| 
 |--|--|--|
-| district | object | the object that gets returned by [`finite.getDistrict()`](#finitegetdistrictdistrictname-state) |
-| user | object | the object that gets returned by [`finite.getUser()`](#finitegetuserdistrict) |
-| classes | object | the object that gets returned by [`finite.getClasses()`](#finitegetclassesdistrict-user) |
+| district | object | the object that gets returned by [`campus.getDistrict()`](#campusgetdistrictdistrictname-state) |
+| user | object | the object that gets returned by [`campus.getUser()`](#campusgetuserdistrict) |
+| classes | object | the object that gets returned by [`campus.getClasses()`](#campusgetclassesdistrict-user) |
 
 #### Returns: 
 
@@ -397,9 +397,9 @@ Returns a super long XML file that is 1.) too big and complicated to show here a
 
 ---
 
-### finite.parseXML(XML)
+### campus.parseXML(XML)
 
-This method takes in the XML file fetched by [`finite.getXML`](#finitegetxmldistrict-user-classes) and parses it into a readable form. 
+This method takes in the XML file fetched by [`campus.getXML`](#campusgetxmldistrict-user-classes) and parses it into a readable form. 
 
 
 #### Example usage:
@@ -407,7 +407,7 @@ This method takes in the XML file fetched by [`finite.getXML`](#finitegetxmldist
 This method returns a promise, so `.then` and `.catch` must be used
 
 ```Javascript
-finite.getXML(XML).then(grades => {
+campus.getXML(XML).then(grades => {
     //...
 }).catch(err => { // catch errors
     console.log('[ERROR]', err)
@@ -418,12 +418,12 @@ finite.getXML(XML).then(grades => {
 
 |Parameter Name|Type|Description| 
 |--|--|--|
-| XML | string | XML file fetched by [`finite.getXML()`](#finitegetxmldistrict-user-classes) |
+| XML | string | XML file fetched by [`campus.getXML()`](#campusgetxmldistrict-user-classes) |
 
 
 #### Returns:
 
-`finite.parseXML()` returns the exact same thing as [`finite.fetch()`](#finitefetchusername-password-district-state).
+`campus.parseXML()` returns the exact same thing as [`campus.fetch()`](#campusfetchusername-password-district-state).
 
 
 
