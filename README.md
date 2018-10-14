@@ -22,7 +22,10 @@ finite.fetch('myUsername', 'myPassword', 'New York School Districts', 'NY').then
         var points = grades[i].student.points // eg. 198
         var grade = grades[i].student.grade // eg. A
 
-        console.log(`you have an ${grade} (${points}/${totalPoints}) in ${className} with ${teacher}`)
+        // if we have a grade in the class
+        if (grade){
+            console.log(`you have an ${grade} (${points}/${totalPoints}) in ${className} with ${teacher}`)
+        }
     }
 
     /*
