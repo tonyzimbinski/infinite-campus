@@ -432,4 +432,4 @@ campus.getXML(XML).then(grades => {
 
 ## Disclaimer
 
-This is an **unofficial** API.
+This is an **unofficial** API and is not endorsed or affiliated with Infinite Campus
