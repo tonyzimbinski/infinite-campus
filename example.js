@@ -1,11 +1,11 @@
-var finite = require('./index.js')
+var campus = require('./index.js')
 var argv = process.argv.slice(2)
 
 /*
   usage: node.js example.js "username" "password" "district" "state"
 */
 
-finite.fetch(argv[0], argv[1], argv[2], argv[3]).then(grades => {
+campus.fetch(argv[0], argv[1], argv[2], argv[3]).then(grades => {
   // loop over every class we have
   for (var i = 0; i < grades.length; i++) {
     var teacher = grades[i].classDetails.teacher // eg. J Smith
