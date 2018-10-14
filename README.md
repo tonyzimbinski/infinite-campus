@@ -12,28 +12,28 @@ var finite = require('finite-campus')
 
 finite.fetch('myUsername', 'myPassword', 'New York School Districts', 'NY').then(grades => {
 
-	// loop over every class we have
-	for (var i = 0; i < grades.length; i++){
-		var teacher = grades[i].classDetails.teacher // eg. J Smith
-		var className = grades[i].classDetails.name // eg. #1 AP Human Geography
-		
-		var totalPoints = grades[i].student.totalPoints // eg. 200
-		var points = grades[i].student.points // eg. 198
-		var grade = grades[i].student.grade // eg. A
+    // loop over every class we have
+    for (var i = 0; i < grades.length; i++){
+        var teacher = grades[i].classDetails.teacher // eg. J Smith
+        var className = grades[i].classDetails.name // eg. #1 AP Human Geography
+        
+        var totalPoints = grades[i].student.totalPoints // eg. 200
+        var points = grades[i].student.points // eg. 198
+        var grade = grades[i].student.grade // eg. A
 
-		console.log(`you have an ${grade} (${points}/${totalPoints}) in ${className} with ${teacher}`)
-	}
+        console.log(`you have an ${grade} (${points}/${totalPoints}) in ${className} with ${teacher}`)
+    }
 
-	/*
-		Output:
-		
-		you have an A (198/200) in #1 AP Human Geography with J Smith
-		you have an A (50/50) in Mathematics with M Def
-		...
-	*/
+    /*
+        Output:
+        
+        you have an A (198/200) in #1 AP Human Geography with J Smith
+        you have an A (50/50) in Mathematics with M Def
+        ...
+    */
 
 }).catch(err => { // catches errors
-	console.log('[ERROR]', err)
+    console.log('[ERROR]', err)
 })
 ``` 
 ---
@@ -59,13 +59,13 @@ This method returns a promise, so `.then` and `.catch` must be used
 ``` JavaScript
 finite.fetch(username, password, district, state).then(grades => {
 
-	console.log('You are enrolled in ' + grades.length + ' classes this year')
-	// You are enrolled in 24 classes this year
-	
-	console.log('You have an ' + grades[0].student.grade + ' in ' + grades[0].classDetails.name)
-	// You have an A in AP Human Geography
+    console.log('You are enrolled in ' + grades.length + ' classes this year')
+    // You are enrolled in 24 classes this year
+    
+    console.log('You have an ' + grades[0].student.grade + ' in ' + grades[0].classDetails.name)
+    // You have an A in AP Human Geography
 }).catch(err => { // handle errors
-	console.log('[ERROR]', err)
+    console.log('[ERROR]', err)
 })
 ```
 
@@ -82,31 +82,31 @@ finite.fetch(username, password, district, state).then(grades => {
 
 ``` JSONC
 [
- {
- "classDetails": {
- "teacher": "J Smith",
- "name": "1 AP Human Geography"
- },
- "position": {
- "period": "2", // period in chronological order, in this case there is zero hour, so 1st hour is actually the 2nd hour of the day
- "periodName": "1", // the name of the period, this is usually won't include zero hour
- "startTime": "08:05 AM", // 12 hour time HH:MM AM/PM
- "endTime": "09:09 AM",
- "term": "1",
- "termName": "Q1",
- "startDate": "09/04/2018", // MM/DD/YYYY format
- "endDate": "11/08/2018"
- },
- "student": {
- "totalPoints": "200.0",
- "points": "190.0",
- "percentage": "95",
- "grade": "A"
- }
- },
- {...},
- {...},
- ...
+    {
+        "classDetails": {
+            "teacher": "J Smith",
+            "name": "1 AP Human Geography"
+        },
+        "position": {
+            "period": "2", // period in chronological order, in this case there is zero hour, so 1st hour is actually the 2nd hour of the day
+            "periodName": "1", // the name of the period, this is usually won't include zero hour
+            "startTime": "08:05 AM", // 12 hour time HH:MM AM/PM
+            "endTime": "09:09 AM",
+            "term": "1",
+            "termName": "Q1",
+            "startDate": "09/04/2018", // MM/DD/YYYY format
+            "endDate": "11/08/2018"
+        },
+        "student": {
+        "totalPoints": "200.0",
+        "points": "190.0",
+        "percentage": "95",
+        "grade": "A"
+        }
+    },
+    {...},
+    {...},
+    ...
 ]
 ```
 
@@ -158,17 +158,17 @@ This method lets you get and set cookies. If you pass it a value it will overrid
 #### Example usage:
 
 ```JavaScript
-	// example login to set authenticated cookies
-	finite.login(.....).then(()=>{
-		// get cookies
-		console.log(finite.cookies()) // JSSESSIONID=XXX; appName=XXX; XSRF-TOKEN=XXX ... ...
+// example login to set authenticated cookies
+finite.login(.....).then(()=>{
+    // get cookies
+    console.log(finite.cookies()) // JSSESSIONID=XXX; appName=XXX; XSRF-TOKEN=XXX ... ...
 
-		// set cookies (this overrides everything)
-		finite.cookies('myCookie=example;')
+    // set cookies (this overrides everything)
+    finite.cookies('myCookie=example;')
 
-		// get new cookies
-		console.log(finite.cookies()) // myCookie=example;
-	}) 
+    // get new cookies
+    console.log(finite.cookies()) // myCookie=example;
+}) 
 ```
 #### Parameters:
 
@@ -196,9 +196,9 @@ This method returns a promise, so `.then` and `.catch` must be used
 
 ```Javascript
 finite.getDistrict('X - Y area schools', 'NY').then(district => {
-	// ...
+    // ...
 }).catch(err => { // catch errors
-	console.log('[ERROR]', err)
+    console.log('[ERROR]', err)
 })
 ```
 
@@ -214,16 +214,16 @@ finite.getDistrict('X - Y area schools', 'NY').then(district => {
 
 ``` JSONC
 {
- "id": 00000,
- "district_name": "CITY NAME AREA SCHOOLS",
- "district_app_name": "cityname",
- "district_baseurl": "https://city-name.infinitecampus.org/campus/",
- "district_code": "xxxxxx",
- "state_code": "XX",
- "staff_login_url": "https://city-name.infinitecampus.org/campus/cityname.jsp",
- "parent_login_url": "https://city-name.infinitecampus.org/campus/portal/cityname.jsp",
- "student_login_url": "https://city-name.infinitecampus.org/campus/portal/cityname.jsp",
- "earliest": true
+    "id": 00000,
+    "district_name": "CITY NAME AREA SCHOOLS",
+    "district_app_name": "cityname",
+    "district_baseurl": "https://city-name.infinitecampus.org/campus/",
+    "district_code": "xxxxxx",
+    "state_code": "XX",
+    "staff_login_url": "https://city-name.infinitecampus.org/campus/cityname.jsp",
+    "parent_login_url": "https://city-name.infinitecampus.org/campus/portal/cityname.jsp",
+    "student_login_url": "https://city-name.infinitecampus.org/campus/portal/cityname.jsp",
+    "earliest": true
 }
 ```
 
@@ -246,9 +246,9 @@ This method returns a promise, so `.then` and `.catch` must be used
 
 ```Javascript
 finite.login(district, 'myUsername', 'myPassword').then(() => {
-	//...
+    //...
 }).catch(err => { // catch errors
-	console.log('[ERROR]', err)
+    console.log('[ERROR]', err)
 })
 ```
 
@@ -282,9 +282,9 @@ This method returns a promise, so `.then` and `.catch` must be used
 
 ```Javascript
 finite.getUser(district).then(user => {
-	//...
+    //...
 }).catch(err => { // catch errors
-	console.log('[ERROR]', err)
+    console.log('[ERROR]', err)
 })
 ```
 
@@ -298,9 +298,9 @@ finite.getUser(district).then(user => {
 
 ```
 { 
- personID: '00000',
- structureID: '000',
- calendarID: '000' 
+    personID: '00000',
+    structureID: '000',
+    calendarID: '000' 
 }
 ```
 
@@ -316,9 +316,9 @@ This method returns a promise, so `.then` and `.catch` must be used
 
 ```Javascript
 finite.getClasses(district, user).then(classes => {
-	//...
+    //...
 }).catch(err => { // catch errors
-	console.log('[ERROR]', err)
+    console.log('[ERROR]', err)
 })
 ```
 
@@ -334,12 +334,15 @@ finite.getClasses(district, user).then(classes => {
 returns an array of class ID's
 
 ```
-[ '000000',
- '000000',
- '000000',
- '000000',
- '000000',
- ...]
+[
+    '000000',
+    '000000',
+    '000000',
+    '000000',
+    '000000',
+    ...
+    ...
+ ]
 ```
 
 ---
@@ -354,9 +357,9 @@ This method returns a promise, so `.then` and `.catch` must be used
 
 ```Javascript
 finite.getXML(district, user, classes).then(XML => {
-	//...
+    //...
 }).catch(err => { // catch errors
-	console.log('[ERROR]', err)
+    console.log('[ERROR]', err)
 })
 ```
 
@@ -386,9 +389,9 @@ This method returns a promise, so `.then` and `.catch` must be used
 
 ```Javascript
 finite.getXML(XML).then(grades => {
-	//...
+    //...
 }).catch(err => { // catch errors
-	console.log('[ERROR]', err)
+    console.log('[ERROR]', err)
 })
 ```
 
