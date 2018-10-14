@@ -43,14 +43,14 @@ finite.fetch('myUsername', 'myPassword', 'New York School Districts', 'NY').then
 
 Get your grades and course information.
 
-This method is a combination of the 6 'advanced usage' methods that are detailed in the 'advanced usage' section of this document. **If all you want to do is get grades and class info, this is the method to use**. For the sake of understanding, the 'advanced' methods are briefly explained below. See the 'advanced usage' section for a more in-depth look on how to leverage these individual methods.
+This method is a combination of the 6 'advanced usage' methods that are detailed in the ['advanced usage'](https://github.com/qwazwsx/infinite-campus-API#advanced-usage) section of this document. **If all you want to do is get grades and class info, this is the method to use**. For the sake of understanding, the 'advanced' methods are briefly explained below. See the ['advanced usage'](https://github.com/qwazwsx/infinite-campus-API#advanced-usage) section for a more in-depth look on how to leverage these individual methods.
 
-1. .getDistrict() - gets the district ID and login URL based on your district name and state
-2. .login() - logs in 
-3. .getUser() - gets various user ID's so we can fetch our class list
-4. .getClasses() - uses the above ID's to get a class list
-5. .getXML() - takes a class list and returns a messy XML file of class information (and a *TON* of other stuff)
-6. .parseXML() - parses the above XML into a more friendly format
+1. [`.getDistrict()`](https://github.com/qwazwsx/infinite-campus-API#finitegetdistrictdistrictname-state) - gets the district ID and login URL based on your district name and state
+2. [`.login()`](https://github.com/qwazwsx/infinite-campus-API#finitelogindistrict-username-password) - logs in 
+3. [`.getUser()`](https://github.com/qwazwsx/infinite-campus-API#finitegetuserdistrict) - gets various user ID's so we can fetch our class list
+4. [`.getClasses()`](https://github.com/qwazwsx/infinite-campus-API#finitegetclassesdistrict-user) - uses the above ID's to get a class list
+5. [`.getXML()`](https://github.com/qwazwsx/infinite-campus-API#finitegetxmldistrict-user-classes) - takes a class list and returns a messy XML file of class information (and a *TON* of other stuff)
+6. [`.parseXML()`](https://github.com/qwazwsx/infinite-campus-API#finiteparsexmlxml) - parses the above XML into a more friendly format
 
 #### Example usage:
 
@@ -149,7 +149,7 @@ note: to prevent error text from displaying as `[object Object] ` in console the
 
 # Advanced Usage
 
-The following methods are all implemented in `finite.fetch()`. These methods are left exposed so people looking for more control can use them. If you are looking to implement other infinite campus functions (ie. assignments, notifications etc) you can use the `finite.login` function to make authenticating easy
+The following methods are all implemented in [`finite.fetch()`](https://github.com/qwazwsx/infinite-campus-API#finitefetchusername-password-district-state). These methods are left exposed so people looking for more control can use them. If you are looking to implement other infinite campus functions (ie. assignments, notifications etc) you can use the [`finite.login`](https://github.com/qwazwsx/infinite-campus-API#finitelogindistrict-username-password) function to make authenticating easy for your modifications.
 
 ### finite.cookies(cookies)
 
@@ -256,7 +256,7 @@ finite.login(district, 'myUsername', 'myPassword').then(() => {
 
 |Parameter Name|Type|Description| 
 |--|--|--|
-| district | object | the object that gets returned by `finite.getDistrict()` |
+| district | object | the object that gets returned by [`finite.getDistrict()`](https://github.com/qwazwsx/infinite-campus-API#finitegetdistrictdistrictname-state) |
 | username | string | your username you use to login |
 | password | string | your password you use to login |
 
@@ -292,7 +292,7 @@ finite.getUser(district).then(user => {
 
 |Parameter Name|Type|Description| 
 |--|--|--|
-| district | object | the object that gets returned by `finite.getDistrict()` |
+| district | object | the object that gets returned by [`finite.getDistrict()`](https://github.com/qwazwsx/infinite-campus-API#finitegetdistrictdistrictname-state) |
 
 #### Returns: 
 
@@ -326,8 +326,8 @@ finite.getClasses(district, user).then(classes => {
 
 |Parameter Name|Type|Description| 
 |--|--|--|
-| district | object | the object that gets returned by `finite.getDistrict()` |
-| user | object | the object that gets returned by `finite.getUser()` |
+| district | object | the object that gets returned by [`finite.getDistrict()`](https://github.com/qwazwsx/infinite-campus-API#finitegetdistrictdistrictname-state) |
+| user | object | the object that gets returned by [`finite.getUser()`](https://github.com/qwazwsx/infinite-campus-API#finitegetuserdistrict) |
 
 #### Returns: 
 
@@ -346,7 +346,7 @@ returns an array of class ID's
 
 ### finite.getXML(district, user, classes)
 
-This method fetches an XML file containing class information . This XML file isn't layed out very thoughtfully and is pretty hard to understand. This is why `finite.parseXML` exists. 
+This method fetches an XML file containing class information . This XML file isn't layed out very thoughtfully and is pretty hard to understand. This is why [`finite.getXML`](https://github.com/qwazwsx/infinite-campus-API#finitegetxmldistrict-user-classes) exists. 
 
 #### Example usage:
 
@@ -364,9 +364,9 @@ finite.getXML(district, user, classes).then(XML => {
 
 |Parameter Name|Type|Description| 
 |--|--|--|
-| district | object | the object that gets returned by `finite.getDistrict()` |
-| user | object | the object that gets returned by `finite.getUser()` |
-| classes | object | the object that gets returned by `finite.getClasses()` |
+| district | object | the object that gets returned by [`finite.getDistrict()`](https://github.com/qwazwsx/infinite-campus-API#finitegetdistrictdistrictname-state) |
+| user | object | the object that gets returned by [`finite.getUser()`](https://github.com/qwazwsx/infinite-campus-API#finitegetuserdistrict) |
+| classes | object | the object that gets returned by [`finite.getClasses()`](https://github.com/qwazwsx/infinite-campus-API#finitegetclassesdistrict-user) |
 
 #### Returns: 
 
@@ -377,7 +377,7 @@ Returns a super long XML file that is 1.) too big and complicated to show here a
 
 ### finite.parseXML(XML)
 
-This method takes in the XML file fetched by `finite.getXML` and parses it into a readable form. 
+This method takes in the XML file fetched by [`finite.getXML`](https://github.com/qwazwsx/infinite-campus-API#finitegetxmldistrict-user-classes) and parses it into a readable form. 
 
 
 #### Example usage:
@@ -396,15 +396,15 @@ finite.getXML(XML).then(grades => {
 
 |Parameter Name|Type|Description| 
 |--|--|--|
-| XML | string | XML file fetched by `finite.getXML()` |
+| XML | string | XML file fetched by [`finite.getXML()`](https://github.com/qwazwsx/infinite-campus-API#finitegetxmldistrict-user-classes) |
 
 
 #### Returns:
 
-`finite.parseXML()` returns the exact same thing as `finite.fetch()`.
+`finite.parseXML()` returns the exact same thing as [`finite.fetch()`](https://github.com/qwazwsx/infinite-campus-API#finitefetchusername-password-district-state).
 
 
 
 ## Disclaimer
 
-This is an **unofficial** API. While *I* haven't had any issues from using it, you might, that isn't my problem.
+This is an **unofficial** API.
