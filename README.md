@@ -1,16 +1,20 @@
 
+
 ## Infinite Campus API
+
+[![npm version](https://badge.fury.io/js/infinite-campus.svg)](https://badge.fury.io/js/infinite-campus)
 
 Easily get class and grade information from Infinite Campus. 
 
 * simple to use
 * compartmentalized for easy addition of new features
 
+## Install with: `npm i infinite-campus`
+
+
 ### Super easy to use
 
-#### example.js
-
-``` JavaScript
+```JavaScript
 var campus = require('infinite-campus')
 
 campus.fetch('myUsername', 'myPassword', 'New York School Districts', 'NY').then(grades => {
@@ -41,7 +45,7 @@ campus.fetch('myUsername', 'myPassword', 'New York School Districts', 'NY').then
 }).catch(err => { // catches errors
     console.log('[ERROR]', err)
 })
-``` 
+```
 
 ---
 
@@ -78,7 +82,7 @@ This method is a combination of the 6 'advanced usage' methods that are detailed
 
 This method returns a promise, so `.then` and `.catch` must be used
 
-``` JavaScript
+```JavaScript
 campus.fetch(username, password, district, state).then(grades => {
 
     console.log('You are enrolled in ' + grades.length + ' classes this year')
@@ -102,7 +106,7 @@ campus.fetch(username, password, district, state).then(grades => {
 
 #### Returns:
 
-``` JSONC
+```JSONC
 [
     {
         "classDetails": {
@@ -234,7 +238,7 @@ campus.getDistrict('X - Y area schools', 'NY').then(district => {
 
 #### Returns: 
 
-``` JSONC
+```JSONC
 {
     "id": 00000,
     "district_name": "CITY NAME AREA SCHOOLS",
@@ -318,7 +322,7 @@ campus.getUser(district).then(user => {
 
 #### Returns: 
 
-```
+```JSONC
 { 
     personID: '00000',
     structureID: '000',
@@ -355,7 +359,7 @@ campus.getClasses(district, user).then(classes => {
 
 returns an array of class ID's
 
-```
+```JSONC
 [
     '000000',
     '000000',
