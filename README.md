@@ -4,6 +4,9 @@
 
 [![npm version](https://badge.fury.io/js/infinite-campus.svg)](https://badge.fury.io/js/infinite-campus)
 
+#### NOTE: some recent changes to how Infinite Campus works may have broken this, an updated version is [in the works](https://github.com/qwazwsx/infinite-campus/projects/1)
+
+
 Easily get class and grade information from Infinite Campus. 
 
 * simple to use
