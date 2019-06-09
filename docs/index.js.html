@@ -1,4 +1,60 @@
-/*
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Source: index.js | Infinite Campus API</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-jsdoc.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/tui-doc.css">
+
+    
+</head>
+<body>
+<nav class="lnb" id="lnb">
+    <div class="logo" style="width: 0px; height: 0px">
+        
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="100%" height="100%">
+        
+    </div>
+    <div class="title">
+        <!-- edited:  -->
+        <!-- <h1><a href="index.html" class="link">Infinite Campus API</a></h1> -->
+        <h1><a href="index.html" class="link" style="font-style:normal;">📚</a></h1>
+        <h3>Infinite Campus API</h3>
+        <p>V2.0.0</p>
+        <a href="https://github.com/qwazwsx" style="color:grey;">qwazwsx</a>
+        <br>
+        <!-- <div style="border-top: 1px white solid;margin-top: 5px;margin-bottom: 10px;"></div> -->
+        <!-- <p style="color:white;">Infinite Campus API</p> -->
+        
+    </div>
+    <div class="search-container" id="search-container">
+        <input type="text" placeholder="Search">
+        <ul></ul>
+    </div>
+    
+    <div class="lnb-api hidden"><h3>Classes</h3><ul><li><a id="Course_navTag" href="Course.html">Course</a><div class="hidden" id="Course_sub"></div></li><li><a id="Notification_navTag" href="Notification.html">Notification</a><div class="hidden" id="Notification_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="Notification.html#toggleRead">toggleRead</a></li></ul></div></li><li><a id="Term_navTag" href="Term.html">Term</a><div class="hidden" id="Term_sub"></div></li><li><a id="User_navTag" href="User.html">User</a><div class="hidden" id="User_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="User.html#getCourses">getCourses</a></li><li><a href="User.html#getNotificationCount">getNotificationCount</a></li><li><a href="User.html#getNotifications">getNotifications</a></li><li><a href="User.html#markAllNotificationsRead">markAllNotificationsRead</a></li><li><a href="User.html#resetNotificationCount">resetNotificationCount</a></li></ul><div class="member-type">Events</div><ul class="inner"><li><a href="User.html#event:ready">ready</a></li></ul></div></li></ul></div>
+</nav>
+<div id="resizer"></div>
+
+<div class="main" id="main">
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
   This file conforms to the standardJS style (https://standardjs.com/)
   This file is licensed under the GNU GPLv3 license (https://www.gnu.org/licenses/gpl-3.0.en.html)
 */
@@ -131,13 +187,13 @@ class User extends EventEmitter {
 
   /**
     * Authenticates a user. Fires [ready]{@link User#event:ready} event when the user is logged in
-    * ##### Example: <br>
-    * <pre><code class="prettyprint">const InfiniteCampus = require('infinite-campus')
+    * ##### Example: &lt;br>
+    * &lt;pre>&lt;code class="prettyprint">const InfiniteCampus = require('infinite-campus')
     * const user = new InfiniteCampus('New York District', 'NY', 'JDoe12', 'XXXXXX')
     *
     * user.on('ready', () => {
     *   // user is authenticated, now we can make API calls
-    * })</code></pre>
+    * })&lt;/code>&lt;/pre>
     * @param {string} districtName - the name of the district the user belongs to (ex: 'New York School Districts', 'New York')
     * @param {string} state - two letter state code ('NY', 'MN')
     * @param {username} - the user's username
@@ -154,7 +210,7 @@ class User extends EventEmitter {
     this.cookies = request.jar()
     request = request.defaults({ jar: this.cookies, headers: { 'User-Agent': `GitHub ${meta.github} - v${meta.version}`, 'Accept': 'application/json' } })
 
-    // fetch district info & log in
+    // fetch district info &amp; log in
     this._getDistrict(districtName, state).then(() => {
       // weird return promise to avoid minor callback hell
       return this._login(username, password)
@@ -180,7 +236,7 @@ class User extends EventEmitter {
   */
   _getDistrict (districtName, state) {
     return new Promise((resolve, reject) => {
-      request('https://mobile.infinitecampus.com/mobile/searchDistrict?query=' + districtName + '&state=' + state, (err, res, body) => {
+      request('https://mobile.infinitecampus.com/mobile/searchDistrict?query=' + districtName + '&amp;state=' + state, (err, res, body) => {
         errHandler.district.handle(err, res, body)
 
         this.district = JSON.parse(body).data[0]
@@ -203,7 +259,7 @@ class User extends EventEmitter {
         throw Error('._getDistrict() must be ran before you can log in.')
       }
 
-      request(this.district.district_baseurl + 'verify.jsp?nonBrowser=true&username=' + username + '&password=' + password + '&appName=' + this.district.district_app_name, (err, res, body) => {
+      request(this.district.district_baseurl + 'verify.jsp?nonBrowser=true&amp;username=' + username + '&amp;password=' + password + '&amp;appName=' + this.district.district_app_name, (err, res, body) => {
         errHandler.login.handle(err, res, body)
 
         resolve()
@@ -213,7 +269,7 @@ class User extends EventEmitter {
 
   /**
     * Fetches data for all courses a user is enrolled in. This method returns information about all terms, all courses, all grades for those courses,
-    * as well as all time placement data for those courses. See documentation for the [Term]{@link Term} and [Course]{@link Course} types for more information on what this method specifically returns. <br>
+    * as well as all time placement data for those courses. See documentation for the [Term]{@link Term} and [Course]{@link Course} types for more information on what this method specifically returns. &lt;br>
    * @async
     * @returns {Term[]} array of terms containing courses
     * @example
@@ -287,7 +343,7 @@ class User extends EventEmitter {
           })
 
           /*
-            At this point we have basic info about terms and a bit data on the classes (name, teacher, grade). But we don't have any placement data (period, start & end time, sequence data) for courses or for terms.
+            At this point we have basic info about terms and a bit data on the classes (name, teacher, grade). But we don't have any placement data (period, start &amp; end time, sequence data) for courses or for terms.
             So now we look over the data from the /roster endpoint and use our cross reference object to add the missing data. We loop over the data (an array of courses) and check the class ID with our cross reference.
             That gives us a pointer into the result array so we can add the data in. We add class placement data into courses and check to see if we need to add term data (this is because the term object is included in every course)
           */
@@ -325,7 +381,7 @@ class User extends EventEmitter {
   }
 
   /**
-      * gets current number of unseen notifications <br>
+      * gets current number of unseen notifications &lt;br>
       * *note: the unseen notification count is different from the read status of an individual notification*
       * @async
       * @returns {integer} number of unseen notifications
@@ -353,7 +409,7 @@ class User extends EventEmitter {
   }
 
   /**
-    * resets the unseen notification count. This is what happens when you click on the bell icon in Infinite Campus <br>
+    * resets the unseen notification count. This is what happens when you click on the bell icon in Infinite Campus &lt;br>
     * *note: this is different from the read status of individual notifications, see [User.markAllNotificationsRead()]{@link User#markAllNotificationsRead} and [Notification.toggleRead()]{@link Notification#toggleRead}*
     * @async
     * @example
@@ -380,7 +436,7 @@ class User extends EventEmitter {
   }
 
   /**
-    * marks all notifications as read <br>
+    * marks all notifications as read &lt;br>
     * *note: this is different from the unread count, see [User.getNotificationCount()]{@link User#getNotificationCount} and [User.resetNotificationCount()]{@link User#resetNotificationCount}*
     * @async
     * @example
@@ -408,7 +464,7 @@ class User extends EventEmitter {
 
   /**
     * toggles a given notifications read state
-    * *note: this is different from the unread count, see [User.getNotificationCount()]{@link User#getNotificationCount} and [User.resetNotificationCount()]{@link User#resetNotificationCount}* <br>
+    * *note: this is different from the unread count, see [User.getNotificationCount()]{@link User#getNotificationCount} and [User.resetNotificationCount()]{@link User#resetNotificationCount}* &lt;br>
     * this function is included in {@link Notification}. For readability this function is private and a dock
     * @async
     * @private
@@ -416,7 +472,7 @@ class User extends EventEmitter {
   _toggleNotificationRead (id) {
     return new Promise((resolve, reject) => {
       checkAuth.call(this)
-      request(this.district.district_baseurl + 'prism?x=notifications.Notification-toggleRead&notificationID=' + id, (err, res, body) => {
+      request(this.district.district_baseurl + 'prism?x=notifications.Notification-toggleRead&amp;notificationID=' + id, (err, res, body) => {
         errHandler.generic200.handle(err, res, body)
         resolve()
       })
@@ -424,11 +480,11 @@ class User extends EventEmitter {
   }
 
   /**
-    * Returns a list of notifications. <br>
-    * ###### notification types: <br>
-    * keep in mind mind that that this data may not be 100% accurate, more research needs to be done <br>
-    * * 2 - attendance updated (eg. you get marked tardy) <br>
-    * * 3 - course grade updated (eg. your class grade changes after an assignment is graded) <br>
+    * Returns a list of notifications. &lt;br>
+    * ###### notification types: &lt;br>
+    * keep in mind mind that that this data may not be 100% accurate, more research needs to be done &lt;br>
+    * * 2 - attendance updated (eg. you get marked tardy) &lt;br>
+    * * 3 - course grade updated (eg. your class grade changes after an assignment is graded) &lt;br>
     * * 4 - assignment updated (eg. an assignment is graded or its state is updated as missing, late, etc )
     * @async
     * @param {integer} [limit=200] - number of notifications to return
@@ -458,7 +514,7 @@ class User extends EventEmitter {
       }
       // if limit isn't set, default to 200
       limit = limit === undefined ? 200 : limit
-      request(this.district.district_baseurl + 'prism?x=notifications.Notification-retrieve&limitCount=' + limit, (err, res, body) => {
+      request(this.district.district_baseurl + 'prism?x=notifications.Notification-retrieve&amp;limitCount=' + limit, (err, res, body) => {
         errHandler.generic200.handle(err, res, body)
         // console.log(body)
         body = JSON.parse(body).data.NotificationList.Notification
@@ -506,3 +562,45 @@ module.exports = User
 // process.on('uncaughtException', function (err) {
 //   console.log('Caught exception: ' + err)
 // })
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<footer>
+    <img class="logo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="width: 0px; height: 0px">
+    <div class="footer-text">Infinite Campus API by qwazwsx</div>
+</footer>
+<script>prettyPrint();</script>
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/tui-doc.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+    <script>
+        var id = '_sub'.replace(/"/g, '_');
+        var selectedApi = document.getElementById(id); // do not use jquery selector
+        var $selectedApi = $(selectedApi);
+
+        $selectedApi.removeClass('hidden');
+
+        // edited: START EDIT
+        $(id.split('_sub')[0] + '_navTag').css('color', '##fa3282');
+
+        var selectedLink = document.getElementById(id.split('_sub')[0] + '_navTag')
+        // make <a> text pink
+        $(selectedLink).css('color', '#fa3282');
+        // highlight class container
+        $(selectedLink).parent().css('background-color', 'rgba(250, 50, 130, 0.08)')
+
+        // edited: END EDIT
+
+        $selectedApi.parent().find('.glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-minus');
+        showLnbApi();
+    </script>
+
+</body>
+</html>

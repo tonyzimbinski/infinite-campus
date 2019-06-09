@@ -1,6 +1,6 @@
 {
   "name": "infinite-campus",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "📚 unofficial API for Infinite Campus written in Node JS",
   "main": "index.js",
   "directories": {
@@ -16,7 +16,9 @@
   "keywords": [
     "infinite-campus",
     "nodejs",
-    "education"
+    "school",
+    "grades",
+    "API"
   ],
   "author": "qwazwsx (https://github.com/qwazwsx)",
   "license": "GPL-3.0",
@@ -25,7 +27,7 @@
   },
   "homepage": "https://github.com/qwazwsx/infinite-campus#readme",
   "dependencies": {
-    "request": "^2.88.0",
-    "xml-js": "^1.6.8"
+    "reqjs-err-handler": "^1.0.1",
+    "request": "^2.88.0"
   }
 }
