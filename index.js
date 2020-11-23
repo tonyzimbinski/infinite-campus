@@ -274,6 +274,10 @@ class User extends EventEmitter {
                 _id: course._id
               }
 
+              // remove grades for courses without grades
+              if (!grade.progressScore && !grade.progressPercent && !grade.progressTotalPoints && !grade.progressPointsEarned)
+                courseResult.grades = undefined;
+
               // push class to term array
               termResult.courses.push(courseResult)
 
@@ -298,6 +302,7 @@ class User extends EventEmitter {
 
             // find course from cross reference
             let ref = crossReference[roster[i]._id]
+            if (!ref) return
             let target = result[ref.i].courses[ref.ii]
 
             // add placement data
