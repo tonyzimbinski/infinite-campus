@@ -16,8 +16,8 @@ user.on('ready', () => {
   // now that we are logged in...
   
   // get grades from all courses, returns an array of terms containing class information (see docs)
-  user.getCourses().then((term) => {
-    console.log(term)
+  user.getCourses().then((terms) => {
+    console.log(terms)
     // [{name:"Q1", courses: [{name: "1 English", grades:{}, ...}, ...]}, ... ]
   })
   
