@@ -1,6 +1,6 @@
 {
   "name": "infinite-campus",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "📚 unofficial API for Infinite Campus written in Node JS",
   "main": "index.js",
   "directories": {
