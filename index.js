@@ -229,7 +229,7 @@ class User extends EventEmitter {
     * })
     *
   */
-  getCourses () {
+  getCourses (schoolID) {
     return new Promise((resolve, reject) => {
       checkAuth.call(this)
       // fetch roster with placements
@@ -245,8 +245,37 @@ class User extends EventEmitter {
           let result = [] // object that we return later
           let crossReference = {}
 
+          let schoolIndex
+
+          // if we are enrolled in multiple schools
+          if (grades.length > 1) {
+            // build list of schools
+            let schools = []
+            grades.forEach((school) => {
+              schools.push({ schoolName: school.displayName, id: school.schoolID, numberOfTerms: school.terms.length, totalNumberOfCourses: school.courses.length })
+            })
+
+            // throw warning is schoolID isn't specifed
+            if (schoolID === undefined) {
+              console.warn(`WARNING: You are enrolled in ${grades.length} schools, please explicitly specify a school ID to fetch courses from. Please see the below output to see which schoolID to use. (Defaulting to the first school returned by I.C. API - name: '${schools[0].schoolName}' - id: ${schools[0].id})`, schools)
+              // default to first in array
+              schoolIndex = 0
+            } else {
+              // find index from schoolID
+              grades.forEach((school, i) => {
+                if (school.schoolID == schoolID) {
+                  schoolIndex = i
+                }
+              })
+              if (schoolIndex === undefined) {
+                throw new Error(`Supplied schoolID in getCourses() does not exist, please select from the following list \n\n ${JSON.stringify(schools)}\n\n`)
+              }
+            }
+
+          }
+          
           // loop over terms from /grades
-          grades[0].terms.forEach((term, i) => {
+          grades[schoolIndex].terms.forEach((term, i) => {
             let termResult = {
               name: term.termName,
               seq: term.termSeq,
@@ -266,17 +295,17 @@ class User extends EventEmitter {
                 teacher: course.teacherDisplay,
                 // seq: null, // set this to null so we can add placement data later
                 grades: {
-                  score: grade.progressScore,
-                  percent: grade.progressPercent,
-                  totalPoints: grade.progressTotalPoints,
-                  pointsEarned: grade.progressPointsEarned
+                  score: (grade.progressScore !== undefined) ? grade.progressScore : grade.score,
+                  percent: (grade.progressPercent !== undefined) ? grade.progressPercent : grade.percent,
+                  totalPoints: (grade.progressTotalPoints !== undefined) ? grade.progressTotalPoints : grade.totalPoints,
+                  pointsEarned: (grade.progressPointsEarned !== undefined) ? grade.progressPointsEarned : grade.pointsEarned
                 },
+                comments: grade.comments,
                 _id: course._id
               }
 
               // remove grades for courses without grades
-              if (!grade.progressScore && !grade.progressPercent && !grade.progressTotalPoints && !grade.progressPointsEarned)
-                courseResult.grades = undefined;
+              if (grades.score === undefined || grades.percent === undefined) courseResult.grades = undefined;
 
               // push class to term array
               termResult.courses.push(courseResult)
