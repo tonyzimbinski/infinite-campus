@@ -295,17 +295,20 @@ class User extends EventEmitter {
                 teacher: course.teacherDisplay,
                 // seq: null, // set this to null so we can add placement data later
                 grades: {
-                  score: grade.progressScore,
-                  percent: grade.progressPercent,
-                  totalPoints: grade.progressTotalPoints,
-                  pointsEarned: grade.progressPointsEarned
+                  score: (grade.progressScore !== undefined) ? grade.progressScore : grade.score,
+                  percent: (grade.progressPercent !== undefined) ? grade.progressPercent : grade.percent,
+                  totalPoints: (grade.progressTotalPoints !== undefined) ? grade.progressTotalPoints : grade.totalPoints,
+                  pointsEarned: (grade.progressPointsEarned !== undefined) ? grade.progressPointsEarned : grade.pointsEarned
                 },
                 comments: grade.comments,
                 _id: course._id
               }
 
               // remove grades for courses without grades
-              if (!grade.progressScore && !grade.progressPercent && !grade.progressTotalPoints && !grade.progressPointsEarned)
+              if (!(grade.progressScore || grade.score) 
+                  && !(grade.progressPercent || grade.percent) 
+                  && !(grade.progressTotalPoints || grade.totalPoints) 
+                  && !(grade.progressPointsEarned || grade.pointsEarned))
                 courseResult.grades = undefined;
 
               // push class to term array
