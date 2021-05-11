@@ -300,6 +300,7 @@ class User extends EventEmitter {
                   totalPoints: grade.progressTotalPoints,
                   pointsEarned: grade.progressPointsEarned
                 },
+                comments: grade.comments,
                 _id: course._id
               }
 
