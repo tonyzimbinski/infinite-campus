@@ -305,7 +305,10 @@ class User extends EventEmitter {
               }
 
               // remove grades for courses without grades
-              if (courseResult.grades.score === undefined || courseResult.grades.percent === undefined) courseResult.grades = undefined;
+              if (!(grade.progressScore || grade.score) 
+                  && !(grade.progressPercent || grade.percent) 
+                  && !(grade.progressTotalPoints || grade.totalPoints) 
+                  && !(grade.progressPointsEarned || grade.pointsEarned)) courseResult.grades = undefined;
 
               // push class to term array
               termResult.courses.push(courseResult)
