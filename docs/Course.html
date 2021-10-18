@@ -40,7 +40,7 @@
         <ul></ul>
     </div>
     
-    <div class="lnb-api hidden"><h3>Classes</h3><ul><li><a id="Course_navTag" href="Course.html">Course</a><div class="hidden" id="Course_sub"></div></li><li><a id="Notification_navTag" href="Notification.html">Notification</a><div class="hidden" id="Notification_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="Notification.html#toggleRead">toggleRead</a></li></ul></div></li><li><a id="Term_navTag" href="Term.html">Term</a><div class="hidden" id="Term_sub"></div></li><li><a id="User_navTag" href="User.html">User</a><div class="hidden" id="User_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="User.html#getCourses">getCourses</a></li><li><a href="User.html#getNotificationCount">getNotificationCount</a></li><li><a href="User.html#getNotifications">getNotifications</a></li><li><a href="User.html#markAllNotificationsRead">markAllNotificationsRead</a></li><li><a href="User.html#resetNotificationCount">resetNotificationCount</a></li></ul><div class="member-type">Events</div><ul class="inner"><li><a href="User.html#event:ready">ready</a></li></ul></div></li></ul></div>
+    <div class="lnb-api hidden"><h3>Classes</h3><ul><li><a id="Course_navTag" href="Course.html">Course</a><div class="hidden" id="Course_sub"></div></li><li><a id="Notification_navTag" href="Notification.html">Notification</a><div class="hidden" id="Notification_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="Notification.html#toggleRead">toggleRead</a></li></ul></div></li><li><a id="Term_navTag" href="Term.html">Term</a><div class="hidden" id="Term_sub"></div></li><li><a id="User_navTag" href="User.html">User</a><div class="hidden" id="User_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="User.html#getCourses">getCourses</a></li><li><a href="User.html#getNotificationCount">getNotificationCount</a></li><li><a href="User.html#getNotifications">getNotifications</a></li><li><a href="User.html#markAllNotificationsRead">markAllNotificationsRead</a></li><li><a href="User.html#resetNotificationCount">resetNotificationCount</a></li></ul><div class="member-type">Events</div><ul class="inner"><li><a href="User.html#event:error">error</a></li><li><a href="User.html#event:ready">ready</a></li></ul></div></li></ul></div>
 </nav>
 <div id="resizer"></div>
 
@@ -572,7 +572,25 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>{ "name": "2 English II", "courseNumber": "000703", "teacher": "John Doe", "roomName": "205B", "_id": "6278079", "grades": {   "score": "A-",   "percent": 89.76,   "totalPoints": 227,   "pointsEarned": 207 }, "placement": {   "periodName": "6",   "periodSeq": 7,   "startTime": "14:00:00",   "endTime": "15:00:00" }}</code></pre>
+    <pre class="prettyprint"><code>{
+ "name": "2 English II",
+ "courseNumber": "000703",
+ "teacher": "John Doe",
+ "roomName": "205B",
+ "_id": "6278079",
+ "grades": {
+   "score": "A-",
+   "percent": 89.76,
+   "totalPoints": 227,
+   "pointsEarned": 207
+ },
+ "placement": {
+   "periodName": "6",
+   "periodSeq": 7,
+   "startTime": "14:00:00",
+   "endTime": "15:00:00"
+ }
+}</code></pre>
 
     
 

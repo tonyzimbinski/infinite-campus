@@ -40,7 +40,7 @@
         <ul></ul>
     </div>
     
-    <div class="lnb-api hidden"><h3>Classes</h3><ul><li><a id="Course_navTag" href="Course.html">Course</a><div class="hidden" id="Course_sub"></div></li><li><a id="Notification_navTag" href="Notification.html">Notification</a><div class="hidden" id="Notification_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="Notification.html#toggleRead">toggleRead</a></li></ul></div></li><li><a id="Term_navTag" href="Term.html">Term</a><div class="hidden" id="Term_sub"></div></li><li><a id="User_navTag" href="User.html">User</a><div class="hidden" id="User_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="User.html#getCourses">getCourses</a></li><li><a href="User.html#getNotificationCount">getNotificationCount</a></li><li><a href="User.html#getNotifications">getNotifications</a></li><li><a href="User.html#markAllNotificationsRead">markAllNotificationsRead</a></li><li><a href="User.html#resetNotificationCount">resetNotificationCount</a></li></ul><div class="member-type">Events</div><ul class="inner"><li><a href="User.html#event:ready">ready</a></li></ul></div></li></ul></div>
+    <div class="lnb-api hidden"><h3>Classes</h3><ul><li><a id="Course_navTag" href="Course.html">Course</a><div class="hidden" id="Course_sub"></div></li><li><a id="Notification_navTag" href="Notification.html">Notification</a><div class="hidden" id="Notification_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="Notification.html#toggleRead">toggleRead</a></li></ul></div></li><li><a id="Term_navTag" href="Term.html">Term</a><div class="hidden" id="Term_sub"></div></li><li><a id="User_navTag" href="User.html">User</a><div class="hidden" id="User_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="User.html#getCourses">getCourses</a></li><li><a href="User.html#getNotificationCount">getNotificationCount</a></li><li><a href="User.html#getNotifications">getNotifications</a></li><li><a href="User.html#markAllNotificationsRead">markAllNotificationsRead</a></li><li><a href="User.html#resetNotificationCount">resetNotificationCount</a></li></ul><div class="member-type">Events</div><ul class="inner"><li><a href="User.html#event:error">error</a></li><li><a href="User.html#event:ready">ready</a></li></ul></div></li></ul></div>
 </nav>
 <div id="resizer"></div>
 
@@ -54,7 +54,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>User<span class="signature">(districtName, state, username, password)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"><span class="icon green">async</span> </span></span>User<span class="signature">(districtName, state, username, password)</span><span class="type-signature"></span></h2>
         
             <div class="class-description"><p>Class representing an authenticated Infinite Campus user</p></div>
         
@@ -71,7 +71,7 @@
     
         <h4 class="name" id="User">
             
-                new <span class="type-signature"></span>User<span class="signature">(districtName, state, username, password)</span><span class="type-signature"></span>
+                new <span class="type-signature"><span class="icon green">async</span> </span>User<span class="signature">(districtName, state, username, password)</span><span class="type-signature"></span>
                 
             
             <div class="container-source members">
@@ -89,7 +89,8 @@
     
     <div class="description">
         <p>Authenticates a user. Fires <a href="User.html#event:ready">ready</a> event when the user is logged in</p>
-<h5>Example: <br></h5><pre><code class="prettyprint">const InfiniteCampus = require('infinite-campus')
+<h5>Example: <br></h5>
+<pre><code class="prettyprint">const InfiniteCampus = require('infinite-campus')
 const user = new InfiniteCampus('New York District', 'NY', 'JDoe12', 'XXXXXX')
 
 user.on('ready', () => {
@@ -228,6 +229,11 @@ user.on('ready', () => {
     
 
     
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="User.html#event:ready">User#event:ready</a></li>
+    </ul>
+    
 
     
 
@@ -311,7 +317,7 @@ user.on('ready', () => {
             
             <div class="container-source members">
                 <code><a href="index.js.html">index.js</a></code>,
-                <code><a href="index.js.html#line232">line 232</a></code>
+                <code><a href="index.js.html#line267">line 267</a></code>
             </div>
             
         </h4>
@@ -409,7 +415,16 @@ as well as all time placement data for those courses. See documentation for the 
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>const InfiniteCampus = require('infinite-campus')const user = new InfiniteCampus('New York District', 'NY', 'JDoe12', 'XXXXXX')// wait until we are done logging inuser.on('ready', () => {  // now that we are logged in, fetch courses  user.getCourses().then((courses) => {    console.log(courses)  })})</code></pre>
+    <pre class="prettyprint"><code>const InfiniteCampus = require('infinite-campus')
+const user = new InfiniteCampus('New York District', 'NY', 'JDoe12', 'XXXXXX')
+
+// wait until we are done logging in
+user.on('ready', () => {
+  // now that we are logged in, fetch courses
+  user.getCourses().then((courses) => {
+    console.log(courses)
+  })
+})</code></pre>
 
     
 
@@ -427,7 +442,7 @@ as well as all time placement data for those courses. See documentation for the 
             
             <div class="container-source members">
                 <code><a href="index.js.html">index.js</a></code>,
-                <code><a href="index.js.html#line345">line 345</a></code>
+                <code><a href="index.js.html#line425">line 425</a></code>
             </div>
             
         </h4>
@@ -525,7 +540,16 @@ as well as all time placement data for those courses. See documentation for the 
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>const InfiniteCampus = require('infinite-campus')const user = new InfiniteCampus('New York District', 'NY', 'JDoe12', 'XXXXXX')// wait until we are done logging inuser.on('ready', () => {  // now that we are logged in, get the notification count  user.getNotificationCount().then((count) => {    console.log(count) // returns: 7  })})</code></pre>
+    <pre class="prettyprint"><code>const InfiniteCampus = require('infinite-campus')
+const user = new InfiniteCampus('New York District', 'NY', 'JDoe12', 'XXXXXX')
+
+// wait until we are done logging in
+user.on('ready', () => {
+  // now that we are logged in, get the notification count
+  user.getNotificationCount().then((count) => {
+    console.log(count) // returns: 7
+  })
+})</code></pre>
 
     
 
@@ -543,7 +567,7 @@ as well as all time placement data for those courses. See documentation for the 
             
             <div class="container-source members">
                 <code><a href="index.js.html">index.js</a></code>,
-                <code><a href="index.js.html#line452">line 452</a></code>
+                <code><a href="index.js.html#line532">line 532</a></code>
             </div>
             
         </h4>
@@ -556,7 +580,8 @@ as well as all time placement data for those courses. See documentation for the 
     
     <div class="description">
         <p>Returns a list of notifications. <br></p>
-<h6>notification types: <br></h6><p>keep in mind mind that that this data may not be 100% accurate, more research needs to be done <br></p>
+<h6>notification types: <br></h6>
+<p>keep in mind mind that that this data may not be 100% accurate, more research needs to be done <br></p>
 <ul>
 <li>2 - attendance updated (eg. you get marked tardy) <br></li>
 <li>3 - course grade updated (eg. your class grade changes after an assignment is graded) <br></li>
@@ -716,7 +741,19 @@ as well as all time placement data for those courses. See documentation for the 
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>// this example will mark all notifications before certain date as read// first we log inconst InfiniteCampus = require('infinite-campus')const user = new InfiniteCampus('New York District', 'NY', 'JDoe12', 'XXXXXX')// wait until we are done logging inuser.on('ready', () => {  // now that we are logged in, get notifications  user.getNotifications().then((notifications) => {    console.log(notifications)  })})</code></pre>
+    <pre class="prettyprint"><code>// this example will mark all notifications before certain date as read
+
+// first we log in
+const InfiniteCampus = require('infinite-campus')
+const user = new InfiniteCampus('New York District', 'NY', 'JDoe12', 'XXXXXX')
+
+// wait until we are done logging in
+user.on('ready', () => {
+  // now that we are logged in, get notifications
+  user.getNotifications().then((notifications) => {
+    console.log(notifications)
+  })
+})</code></pre>
 
     
 
@@ -734,7 +771,7 @@ as well as all time placement data for those courses. See documentation for the 
             
             <div class="container-source members">
                 <code><a href="index.js.html">index.js</a></code>,
-                <code><a href="index.js.html#line399">line 399</a></code>
+                <code><a href="index.js.html#line479">line 479</a></code>
             </div>
             
         </h4>
@@ -811,7 +848,16 @@ as well as all time placement data for those courses. See documentation for the 
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>const InfiniteCampus = require('infinite-campus')const user = new InfiniteCampus('New York District', 'NY', 'JDoe12', 'XXXXXX')// wait until we are done logging inuser.on('ready', () => {  // now that we are logged in, mark all notifications as read  user.markAllNotificationsRead().then(() => {    // ...  })})</code></pre>
+    <pre class="prettyprint"><code>const InfiniteCampus = require('infinite-campus')
+const user = new InfiniteCampus('New York District', 'NY', 'JDoe12', 'XXXXXX')
+
+// wait until we are done logging in
+user.on('ready', () => {
+  // now that we are logged in, mark all notifications as read
+  user.markAllNotificationsRead().then(() => {
+    // ...
+  })
+})</code></pre>
 
     
 
@@ -829,7 +875,7 @@ as well as all time placement data for those courses. See documentation for the 
             
             <div class="container-source members">
                 <code><a href="index.js.html">index.js</a></code>,
-                <code><a href="index.js.html#line372">line 372</a></code>
+                <code><a href="index.js.html#line452">line 452</a></code>
             </div>
             
         </h4>
@@ -906,7 +952,16 @@ as well as all time placement data for those courses. See documentation for the 
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>const InfiniteCampus = require('infinite-campus')const user = new InfiniteCampus('New York District', 'NY', 'JDoe12', 'XXXXXX')// wait until we are done logging inuser.on('ready', () => {  // now that we are logged in, reset the notification count  user.resetNotificationCount().then(() => {    // ...  })})</code></pre>
+    <pre class="prettyprint"><code>const InfiniteCampus = require('infinite-campus')
+const user = new InfiniteCampus('New York District', 'NY', 'JDoe12', 'XXXXXX')
+
+// wait until we are done logging in
+user.on('ready', () => {
+  // now that we are logged in, reset the notification count
+  user.resetNotificationCount().then(() => {
+    // ...
+  })
+})</code></pre>
 
     
 
@@ -921,6 +976,95 @@ as well as all time placement data for those courses. See documentation for the 
         <h3 class="subsection-title">Events</h3>
 
         <dl>
+            
+
+<dt>
+    
+        <h4 class="name" id="event:error">
+            
+                error
+                
+            
+            <div class="container-source members">
+                <code><a href="index.js.html">index.js</a></code>,
+                <code><a href="index.js.html#line132">line 132</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Fired when the login process has failed</p>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+        
             
 
 <dt>
