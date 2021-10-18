@@ -1,4 +1,4 @@
-## Infinite Campus API
+## Infinite Campus API 
 [![npm version](https://badge.fury.io/js/infinite-campus.svg)](https://badge.fury.io/js/infinite-campus)
 ##### install with `npm i infinite-campus`
 
