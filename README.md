@@ -35,6 +35,13 @@ user.on('ready', () => {
 
 	
 })
+
+
+// listen for any errors thrown while logging in
+user.on('error', (err) => {
+	console.log('Error while Logging in. Bad credentials.' + err)
+})
+
 ```
 
 ## [READ THE FULL DOCUMENTATION HERE](https://qwazwsx.xyz/infinite-campus/User.html)
