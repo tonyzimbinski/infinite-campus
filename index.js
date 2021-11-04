@@ -271,11 +271,13 @@ class User extends EventEmitter {
       request(this.district.district_baseurl + 'resources/portal/roster?_expand=%7BsectionPlacements-%7Bterm%7D%7D', (err, res, body) => {
         errHandler.generic200.handle(err, res, body)
         let roster = JSON.parse(body)
+        console.log('\n\n[ROSTER ENDPOINT]', JSON.stringify(roster))
 
         // fetch grades
         request(this.district.district_baseurl + 'resources/portal/grades', (err, res, body) => {
           errHandler.generic200.handle(err, res, body)
           let grades = JSON.parse(body)
+          console.log('\n\n[GRADES ENDPOINT]', JSON.stringify(grades))
 
           let result = [] // object that we return later
           let crossReference = {}
