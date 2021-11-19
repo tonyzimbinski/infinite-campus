@@ -45,3 +45,7 @@ user.on('error', (err) => {
 ```
 
 ## [READ THE FULL DOCUMENTATION HERE](https://qwazwsx.xyz/infinite-campus/User.html)
+
+## Disclaimer
+
+This is an unofficial library and is not endorsed  or officially recognized by Infinite Campus. The Infinite Campus name is owned by Infinite Campus, Inc and again, has nothing to do with this library. This library uses bits and pieces of both the web and mobile API that drives the Infinite Campus Client. If you are from Infinite Campus and have concerns, please submit an [issue](https://github.com/qwazwsx/infinite-campus/issues/new). Please don't sue me.  
