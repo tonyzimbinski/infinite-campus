@@ -548,7 +548,8 @@ class User extends EventEmitter {
         let result = []
 
         // loop over every assignment
-        body.forEach((notification) => {
+        body.forEach((notification, index) => {
+          console.log(`\n\n [GET NOTIFICATIONS][#${index}]`, notification)
           result.push({
             id: notification.notificationID,
             text: notification.notificationText,
