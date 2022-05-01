@@ -247,6 +247,34 @@ class User extends EventEmitter {
   }
 
   /**
+   * Gets assignments with filters
+   * @async
+   * @param {filters} object of filters for the assignments. e.g. {missing: true, multiplier: 1}
+   * @returns {Assignment[]} array of Assignments containing heaps of data
+  */
+  getAssignments(filters) {
+    return new Promise((resove, reject) => {
+      checkAuth.call(this)
+      
+      // Fetch
+      request(this.district.district_baseurl + 'api/portal/assignment/listView', (err, res, body) => {
+        errHandler.generic200.handle(err, res, body)
+        let assignmentList = JSON.parse(body)
+        
+        if (typeof filters != 'undefined') {
+          for (let [key, _value] of Object.entries(filters)) {
+            if (key in assignmentList[0]) {
+              assignmentList = assignmentList.filter((assignment) => assignment[key] == filters[key])
+            }
+          }
+        }
+        
+        resolve(assignmentList)
+      })
+    })
+  }
+  
+  /**
    * Fetches data for all courses a user is enrolled in. This method returns information about all terms, all courses, all grades for those courses,
    * as well as all time placement data for those courses. See documentation for the [Term]{@link Term} and [Course]{@link Course} types for more information on what this method specifically returns. <br>
    * @async
