@@ -253,7 +253,7 @@ class User extends EventEmitter {
    * @returns {Assignment[]} array of Assignments containing heaps of data
   */
   getAssignments(filters) {
-    return new Promise((resove, reject) => {
+    return new Promise((resolve, reject) => {
       checkAuth.call(this)
       
       // Fetch
