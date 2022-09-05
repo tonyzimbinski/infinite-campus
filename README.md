@@ -3,7 +3,7 @@
 [![npm version](https://badge.fury.io/js/infinite-campus.svg#)](https://badge.fury.io/js/infinite-campus)
 ##### install with `npm i infinite-campus`
 
-[(full docs here)](https://qwazwsx.xyz/infinite-campus/User.html)
+[(full docs here)](https://tonyzimbinski.github.io/infinite-campus/User.html)
 
 ### Super easy to use!
 
