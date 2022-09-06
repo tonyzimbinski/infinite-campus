@@ -313,7 +313,10 @@ class User extends EventEmitter {
             }
 
           }
-
+//           deal with undefined schoolIndex
+          if (!schoolIndex) {
+            schoolIndex = 0
+          }
           // loop over terms from /grades
           grades[schoolIndex].terms.forEach((term, i) => {
             let termResult = {
