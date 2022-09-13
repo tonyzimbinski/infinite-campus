@@ -47,7 +47,7 @@ user.on('error', (err) => {
 
 ```
 
-## [READ THE FULL DOCUMENTATION HERE](https://qwazwsx.xyz/infinite-campus/User.html)
+## [READ THE FULL DOCUMENTATION HERE](https://tonyzimbinski.github.io/infinite-campus/User.html)
 
 
 ## Disclaimer
