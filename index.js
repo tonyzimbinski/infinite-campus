@@ -207,7 +207,7 @@ class User extends EventEmitter {
   */
   _getDistrict(districtName, state) {
     return new Promise((resolve, reject) => {
-      request('https://mobile.infinitecampus.com/mobile/searchDistrict?query=' + districtName + '&state=' + state, (err, res, body) => {
+      request('https://mobile.infinitecampus.com/mobile/searchDistrict?query=' + encodeURIComponent(districtName) + '&state=' + encodeURIComponent(state), (err, res, body) => {
         try {
           errHandler.district.handle(err, res, body)
         } catch (err) {
@@ -234,7 +234,7 @@ class User extends EventEmitter {
         throw Error('._getDistrict() must be ran before you can log in.')
       }
 
-      request(this.district.district_baseurl + 'verify.jsp?nonBrowser=true&username=' + username + '&password=' + password + '&appName=' + this.district.district_app_name, (err, res, body) => {
+      request(this.district.district_baseurl + 'verify.jsp?nonBrowser=true&username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password) + '&appName=' + encodeURIComponent(this.district.district_app_name), (err, res, body) => {
         try {
           errHandler.login.handle(err, res, body)
         } catch (err) {
