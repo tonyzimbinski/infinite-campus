@@ -1,33 +1,36 @@
 {
-  "name": "infinite-campus",
-  "version": "3.1.2",
-  "description": "📚 unofficial API for Infinite Campus written in Node JS",
-  "main": "index.js",
-  "directories": {
-    "doc": "doc"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/qwazwsx/infinite-campus.git"
-  },
-  "keywords": [
-    "infinite-campus",
-    "nodejs",
-    "school",
-    "grades",
-    "API"
-  ],
-  "author": "qwazwsx (https://github.com/qwazwsx)",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/qwazwsx/infinite-campus/issues"
-  },
-  "homepage": "https://github.com/qwazwsx/infinite-campus#readme",
-  "dependencies": {
-    "reqjs-err-handler": "^1.0.1",
-    "request": "^2.88.0"
-  }
+	"name": "infinite-campus",
+	"version": "1.0.0",
+	"description": "An Infinite Campus API",
+	"main": "src/index.ts",
+	"repository": "git@github.com:thealphareturns/infinite-campus",
+	"author": "TheAlphaReturns",
+	"license": "GPL-3.0",
+	"private": false,
+	"scripts": {
+		"build": "tsc",
+		"start": "node dist/index.js",
+		"dev": "node --experimental-specifier-resolution=node --no-warnings --loader ts-node/esm src/index.ts",
+		"lint": "eslint --fix src --ext .ts",
+		"test": "node --experimental-specifier-resolution=node --no-warnings --loader ts-node/esm src/testapp.ts"
+	},
+	"dependencies": {
+		"@types/node": "^18.8.3",
+		"axios": "^1.1.2",
+		"axios-cookiejar-support": "^4.0.3",
+		"events": "^3.3.0",
+		"tough-cookie": "^4.1.2",
+		"tsc": "^2.0.4",
+		"typescript": "^4.8.4"
+	},
+	"devDependencies": {
+		"@types/tough-cookie": "^4.0.2",
+		"@typescript-eslint/eslint-plugin": "^5.39.0",
+		"@typescript-eslint/parser": "^5.39.0",
+		"eslint": "^8.25.0",
+		"eslint-plugin-import": "^2.26.0",
+		"eslint-plugin-simple-import-sort": "^8.0.0",
+		"ts-node": "^10.9.1"
+	},
+	"type": "module"
 }

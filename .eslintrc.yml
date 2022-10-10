@@ -1,0 +1,59 @@
+extends:
+  - eslint:recommended
+  - plugin:@typescript-eslint/eslint-recommended
+  - plugin:@typescript-eslint/recommended
+
+plugins:
+  - import
+  - simple-import-sort
+  - "@typescript-eslint"
+
+parser: "@typescript-eslint/parser"
+
+parserOptions:
+  sourceType: module
+
+env:
+  node: true
+  es2022: true
+
+rules:
+  indent:
+    - warn
+    - tab
+    - SwitchCase: 1
+
+  quotes:
+    - warn
+    - single
+
+  semi:
+    - error
+    - always
+
+  comma-dangle:
+    - error
+    - never
+
+  "@typescript-eslint/no-unused-vars": off
+  "@typescript-eslint/no-undef": off
+  "@typescript-eslint/no-constant-condition": off
+  "@typescript-eslint/no-self-assign": off
+  "@typescript-eslint/no-empty": off
+  "@typescript-eslint/no-explicit-any": off
+  "@typescript-eslint/prefer-const": off
+  prefer-const: off
+
+  import/first: warn
+  import/exports-last: warn
+  import/no-duplicates: warn
+  import/no-unresolved: off
+
+  import/newline-after-import:
+    - warn
+    - count: 1
+
+  sort-imports:
+    - warn
+    - allowSeparatedGroups: true
+      ignoreCase: true
